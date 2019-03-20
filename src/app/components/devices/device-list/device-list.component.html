@@ -1,0 +1,15 @@
+<ul class="list-group">
+    <li *ngFor="let device of devices | keyvalue" class="list-group-item">
+        <!--<span> {{ device.key }}: {{ device.value.id }} </span>-->
+        <div class="device-item">
+            <!--<span class="float-left"> {{ device.value.id }} </span>-->
+            <mat-slide-toggle class="float-left" color="accent" (change)="onToggleSwitch($event, device.value)" [checked]="device.value.onn">
+                <!--{{ device.value.onn ? 'ONN' : 'OFF' }}-->
+            </mat-slide-toggle>
+            <span> {{ device.value.type }} : {{ device.value.location }} </span>
+            <h4>
+                <span class="badge {{ device.value.onn ? 'badge-success' : 'badge-danger' }} float-right">  {{ device.value.onn ? 'ONN' : 'OFF' }} </span>
+            </h4>
+        </div>
+    </li>
+</ul>
