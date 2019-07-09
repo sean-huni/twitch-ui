@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {FormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatButtonModule} from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
