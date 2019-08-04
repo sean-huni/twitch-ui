@@ -24,6 +24,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {CommonModule} from "@angular/common";
 import {SharedModule} from "./shared.module";
 
+import {InViewportModule} from "ng-in-viewport";
+import 'intersection-observer';
 
 @NgModule({
     declarations: [
@@ -48,7 +50,8 @@ import {SharedModule} from "./shared.module";
         MatButtonModule,
         MatButtonToggleModule,
         MatSlideToggleModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        InViewportModule
     ],
     exports: [BsDropdownModule, TooltipModule, ModalModule],
     providers: [],

@@ -1,106 +1,132 @@
 <div class="row">
     <div class="col-md-1">&nbsp;</div>
-    <div class="col-md-10">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="panel-title">Device Health-Info</h3>
-            </div> <!-- card-header -->
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12 col-sm-8">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Device</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>RPi-0</td>
-                                        <td>Outdoor</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-danger' }} "> OFFLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>RPi-B</td>
-                                        <td>Bedrooms</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-success' }} "> ONLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>RPi-K</td>
-                                        <td>Kitchen</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-success' }} "> ONLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">4</th>
-                                        <td>RPi-L</td>
-                                        <td>Lounge</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-danger' }} "> OFFLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">5</th>
-                                        <td>RPi-G</td>
-                                        <td>Garage</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-success' }} "> ONLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">6</th>
-                                        <td>RPi-Z</td>
-                                        <td>Geysers</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-danger' }} "> OFFLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">7</th>
-                                        <td>RPi-X</td>
-                                        <td>Security-Cameras</td>
-                                        <td>
-                                            <h5>
-                                                <span class="badge {{ 'badge-success' }} "> ONLINE </span>
-                                            </h5>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li class="list-group-item bg-info">
-                                Select a device for more info.
-                            </li>
-                        </ul>
-                    </div>
+    <div class="timeline2 col-md-10">
+        <div class="header">
+            <h1 class="card-title">Events Timeline</h1>
+        </div>
+
+        <ul>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>17<sup>th</sup> of July 2019</time>
+                    Device 01 Unreachable.
+                    <span>1hr ago</span>
                 </div>
-            </div> <!-- card-body -->
-        </div> <!-- card -->
+                <span class="time">
+					<span>15:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>17<sup>th</sup> of July 2019</time>
+                    Device 01 Online.
+                    <span>1hr ago</span>
+                </div>
+                <span class="time">
+					<span>13:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>17<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - ONN.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>14:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>15<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - ONN.
+                    <span>26hrs ago</span>
+                </div>
+                <span class="time">
+					<span>23:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+                <div>
+                    <time>16<sup>th</sup> of July 2019</time>
+                    Bedroom Switch - OFF.
+                    <span>4hrs ago</span>
+                </div>
+                <span class="time">
+					<span>00:00:03</span>
+				</span>
+            </li>
+        </ul>
     </div>
     <div class="col-md-1">&nbsp;</div>
 </div>
