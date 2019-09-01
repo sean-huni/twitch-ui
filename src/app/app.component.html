@@ -1,12 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container bg-dark">
-    <app-navbar></app-navbar>
-    <div style="text-align:center">
-        <h3>
-            {{ title }}
-        </h3>
-        <router-outlet></router-outlet>
+<app-navbar></app-navbar>
+<!--<body class=" max-out-body-height">-->
+    <div class="container">
+        <div style="text-align:center">
+            <h3 style="color: azure">
+                {{ title }}
+            </h3>
+            <div class="col-md-1">&nbsp;</div>
+            <router-outlet></router-outlet>
+        </div>
     </div>
     <app-footer></app-footer>
-</div>
+<!--</body>-->
+
 

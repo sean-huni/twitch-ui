@@ -1,36 +1,23 @@
 <div class="row">
-    <div class="col-md-2">&nbsp;</div>
-    <div class="col md-8">
-        <div class="card-header">
-            <h4 class="panel-title">Bedroom Ultra-Violet Light</h4>
+    <div class="col-md-1">&nbsp;</div>
+    <div class="timeline2 col-md-10">
+        <div class="header">
+            <h1 class="card-title">Events Timeline</h1>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12 col-sm-8">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            ESwitch:
-                            <mat-button-toggle-group #group="matButtonToggleGroup">
-                                <mat-button-toggle value="ONN" (click)="toggleSwitch(true)">
-                                    <button mat-raised-button class="btn-warning" style="pointer-events:none;">ONN</button>
-                                </mat-button-toggle>
-                                <mat-button-toggle value="OFF" (click)="toggleSwitch(false)">
-                                    <button mat-raised-button class="btn-info" style="pointer-events:none;">OFF</button>
-                                </mat-button-toggle>
-                            </mat-button-toggle-group>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="example-selected-value"> Status:
-                               <h5>
-                               <span class="badge {{ group.value === 'ONN' ? 'badge-success' : 'badge-danger' }} ">
-                                    {{group.value}}
-                                </span>
-                               </h5>
-                            </div>
-                        </li>
-                    </ul>
+
+        <ul>
+            <li (inViewportAction)="checkIfInViewport($event)" *ngFor="let log of logsModel | keyvalue" class="in-view"
+                inViewport>
+                <div>
+                    <time>17<sup>th</sup> of July 2019</time>
+                    {{log.value.item}} - {{log.value.status}}.
+                    <span>{{log.value.dateTime.toString() | timeAgo}}</span>
                 </div>
-            </div>
-        </div>
+                <span class="time">
+					<span>{{twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getHours()) + ':' + twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getMinutes()) + ':' + twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getSeconds()) }}</span>
+				</span>
+            </li>
+        </ul>
     </div>
+    <div class="col-md-1">&nbsp;</div>
 </div>

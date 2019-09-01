@@ -56,11 +56,12 @@ export class DeviceListComponent implements OnInit {
                 // console.log('Http Resp Values', resp.values().next().value);
                 // this.setDevices = (<Device[]>resp);
 
-                for (let respKey in resp) {
-                    console.log("element-Key: ", respKey);
-                }
+                let devices: Device[] = resp['devices'];
 
-                let v = Object.entries(resp).map(([type, value]) => ({type, value}));
+                // const dataArr = JSON.parse(JSON.stringify(respKey)) as Device[];
+                // const details = dataArr.map(data => new Device().setInstance(data));
+
+                let v = Object.entries(devices).map(([type, value]) => ({type, value}));
                 let x = v.values();
                 for (let i = 1; i <= v.length; i++) {
                     this.getDevices.push((<Device>x.next().value.value));
