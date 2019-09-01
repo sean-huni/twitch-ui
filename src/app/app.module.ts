@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {FormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { MatButtonModule } from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
@@ -26,6 +26,7 @@ import {SharedModule} from "./shared.module";
 
 import {InViewportModule} from "ng-in-viewport";
 import 'intersection-observer';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import 'intersection-observer';
         DeviceListComponent,
         DeviceDetailComponent,
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
+        TimeAgoPipe
     ],
     imports: [
         CommonModule,

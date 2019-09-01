@@ -6,124 +6,15 @@
         </div>
 
         <ul>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
+            <li (inViewportAction)="checkIfInViewport($event)" *ngFor="let log of logsModel | keyvalue" class="in-view"
+                inViewport>
                 <div>
                     <time>17<sup>th</sup> of July 2019</time>
-                    Device 01 Unreachable.
-                    <span>1hr ago</span>
+                    {{log.value.item}} - {{log.value.status}}.
+                    <span>{{log.value.dateTime.toString() | timeAgo}}</span>
                 </div>
                 <span class="time">
-					<span>15:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>17<sup>th</sup> of July 2019</time>
-                    Device 01 Online.
-                    <span>1hr ago</span>
-                </div>
-                <span class="time">
-					<span>13:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>17<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - ONN.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>14:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>15<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - ONN.
-                    <span>26hrs ago</span>
-                </div>
-                <span class="time">
-					<span>23:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
-				</span>
-            </li>
-            <li inViewport (inViewportAction)="checkIfInViewport($event)" class="in-view">
-                <div>
-                    <time>16<sup>th</sup> of July 2019</time>
-                    Bedroom Switch - OFF.
-                    <span>4hrs ago</span>
-                </div>
-                <span class="time">
-					<span>00:00:03</span>
+					<span>{{twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getHours()) + ':' + twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getMinutes()) + ':' + twentyFourHrFormat(extractDate(log.value.dateTime.toString()).getSeconds()) }}</span>
 				</span>
             </li>
         </ul>

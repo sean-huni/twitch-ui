@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ESwitch} from '../../enums/eswitch.enum';
+import {formatDate} from "@angular/common";
 import {DeviceService} from '../../services/device.service';
+import {RollingLogsModel} from "../../models/rolling-logs.model";
 
 @Component({
     selector: 'app-home',
@@ -8,26 +9,25 @@ import {DeviceService} from '../../services/device.service';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    private swtichOp: ESwitch;
-    private deviceID: number = 1;
     private inView: Boolean = true;
+    private time: Date = new Date(2019, 8, 21, 19, 32, 12);
+    private now: Date = new Date();
+    private fDate: string = 'MM/dd/yyyy HH:mm:ss';
+    private locale: string = 'en-ZA';
+
+    private _logsModel: RollingLogsModel[] = [];
 
     constructor(private deviceService: DeviceService) {
     }
 
-    ngOnInit() {
+    get logsModel(): RollingLogsModel[] {
+        return this._logsModel;
     }
 
     // execute command to build: npm run build
 
-    toggleSwitch(switchAction: Boolean) {
-        this.swtichOp = switchAction ? ESwitch.ONN : ESwitch.OFF;
-        console.log('ESwitch: ', this.swtichOp);
-        this.deviceService.flipSwitch(this.deviceID, this.swtichOp).subscribe(
-            resp => {
-                console.log(resp);
-            }, error1 => console.error(error1)
-        );
+    set logsModel(value: RollingLogsModel[]) {
+        this._logsModel = value;
     }
 
     checkIfInViewport(event: any) {
@@ -51,4 +51,49 @@ export class HomeComponent implements OnInit {
             this.inView = false;
         }
     }
+
+    ngOnInit() {
+        this.getAllDevicesAndLogs();
+    }
+
+    getAllDevicesAndLogs() {
+        console.log('Fetching all devices and logs...');
+        this.deviceService.getRollingLogs().subscribe(
+            resp => {
+                console.log('Device Init Response: ', resp);
+
+                let devices: RollingLogsModel[] = resp['rolling-logs'];
+                let v = Object.entries(devices).map(([type, value]) => ({type, value}));
+                let x = v.values();
+                for (let i = 1; i <= v.length; i++) {
+                    this.logsModel.push((<RollingLogsModel>x.next().value.value));
+                }
+
+                // this.logsModel.forEach(value => value.dateTime = this.extractDate(value.dateTime.toDateString()));
+
+                console.log('Rolling Logs Formatted: ' + this.logsModel);
+
+            }, error1 => console.error(error1)
+        );
+    }
+
+    extractDate(dateTimeStr: string) {
+        return new Date(formatDate(dateTimeStr, this.fDate, this.locale));
+    }
+
+    twentyFourHrFormat(x: number) {
+        let s: string = x.toString();
+        return s.length < 2 ? '0' + s : s;
+    }
+
+    extractDateOG(dateTimeStr: string) {
+        console.log('Str Date: ', dateTimeStr);
+
+        let nDate = formatDate(dateTimeStr, this.fDate, this.locale);
+        console.log('formatDate Obj: ', nDate);
+        let aDate: Date = new Date(nDate);
+        console.log('New Date Obj: ', aDate);
+        return aDate;
+    }
+
 }
