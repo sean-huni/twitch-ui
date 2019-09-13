@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
     private fDate: string = 'MM/dd/yyyy HH:mm:ss';
     private locale: string = 'en-ZA';
 
-    private _logsModel: RollingLogsModel[] = [];
-
     constructor(private deviceService: DeviceService) {
     }
+
+    private _logsModel: RollingLogsModel[] = [];
 
     get logsModel(): RollingLogsModel[] {
         return this._logsModel;
@@ -53,12 +53,12 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAllDevicesAndLogs();
+        this.fetchAllDevicesAndLogs();
     }
 
-    getAllDevicesAndLogs() {
+    fetchAllDevicesAndLogs() {
         console.log('Fetching all devices and logs...');
-        this.deviceService.getRollingLogs().subscribe(
+        this.deviceService.fetchRollingLogs().subscribe(
             resp => {
                 console.log('Device Init Response: ', resp);
 
@@ -70,8 +70,6 @@ export class HomeComponent implements OnInit {
                 }
 
                 // this.logsModel.forEach(value => value.dateTime = this.extractDate(value.dateTime.toDateString()));
-
-                console.log('Rolling Logs Formatted: ' + this.logsModel);
 
             }, error1 => console.error(error1)
         );

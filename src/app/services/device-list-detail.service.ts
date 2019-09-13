@@ -13,12 +13,12 @@ export class DeviceListDetailService {
     constructor() {
     }
 
-    changeDeviceInfo(device: Device) {
-        this.deviceSource.next(device);
-    }
-
     get getObservableDevice(): Observable<Device> {
         return this.observableDevice;
+    }
+
+    changeDeviceInfo(device: Device) {
+        this.deviceSource.next(device);
     }
 
     // set setCurrentDeviceInfo(value: Observable<Device>) {

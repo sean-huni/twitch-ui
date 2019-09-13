@@ -16,11 +16,11 @@ export class DeviceService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getAllDevices() {
+    fetchAllDevices() {
         return this.httpClient.get(AppConst.REST_ENDPOINT_DEVICES, {headers: this.headers});
     }
 
-    getRollingLogs() {
+    fetchRollingLogs() {
         const reqUrl = AppConst.REST_ENDPOINT_DEVICES + 'rolling-logs';
         return this.httpClient.get(reqUrl, {headers: this.headers});
     }
