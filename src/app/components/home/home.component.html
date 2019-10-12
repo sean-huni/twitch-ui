@@ -9,7 +9,10 @@
             <li (inViewportAction)="checkIfInViewport($event)" *ngFor="let log of logsModel | keyvalue" class="in-view"
                 inViewport>
                 <div>
-                    <time>17<sup>th</sup> of July 2019</time>
+                    <time>{{sliceDate(log.value.dateTime.toString()).get('day')}}
+                        <sup>{{dateSuperscriptSuffix(sliceDate(log.value.dateTime.toString()).get('day'))}}</sup>
+                        of {{monthOfTheYear(sliceDate(log.value.dateTime.toString()).get('month'))}} {{sliceDate(log.value.dateTime.toString()).get('year')}}
+                    </time>
                     {{log.value.item}} - {{log.value.status}}.
                     <span>{{log.value.dateTime.toString() | timeAgo}}</span>
                 </div>
