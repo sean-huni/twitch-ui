@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ESwitch} from "../enums/eswitch.enum";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AppConst} from "../const/app-const";
+import {ESwitch} from '../enums/eswitch.enum';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AppConst} from '../const/app-const';
+import {Switch} from '../models/switch.model';
 
 
 @Injectable({
@@ -26,7 +27,11 @@ export class DeviceService {
     }
 
     flipSwitch(id: number, option: ESwitch) {
-        const reqUrl = AppConst.REST_ENDPOINT_DEVICES + id + '?switch=' + option;
-        return this.httpClient.put(reqUrl, null, {headers: this.headers})
+        const sSwitch = new Switch();
+        sSwitch.setStatus = option;
+        const jsonBody: string = JSON.stringify(sSwitch);
+        console.info('jsonString: ', jsonBody);
+        const reqUrl = AppConst.REST_ENDPOINT_DEVICES + id;
+        return this.httpClient.put(reqUrl, jsonBody, {headers: this.headers});
     }
 }
