@@ -1,3 +1,3 @@
-export enum ESwitch{
+export enum ESwitch {
     OFF = 'OFF', ONN = 'ONN'
 }

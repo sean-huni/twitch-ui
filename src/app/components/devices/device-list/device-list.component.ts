@@ -16,10 +16,23 @@ export class DeviceListComponent implements OnInit {
     constructor(private deviceService: DeviceService, private deviceListDetailService: DeviceListDetailService) {
     }
 
+    get getDevices(): Device[] {
+        return this.devices;
+    }
+
+    set setDevices(value: Device[]) {
+        this.devices = value;
+    }
+
     ngOnInit() {
         this.deviceListDetailService.getObservableDevice.subscribe(device => this.device = device);
         this.invokeDeviceService();
     }
+
+    /* *****************
+     * Getter & Setters
+     * *****************
+     */
 
     onToggleSwitch(event, anyDevice: any) {
         let device: Device = new Device();
@@ -94,18 +107,5 @@ export class DeviceListComponent implements OnInit {
                 // console.log('Values: ', this.devices.values());
             }, error => console.error(error)
         );
-    }
-
-    /* *****************
-     * Getter & Setters
-     * *****************
-     */
-
-    get getDevices(): Device[] {
-        return this.devices;
-    }
-
-    set setDevices(value: Device[]) {
-        this.devices = value;
     }
 }

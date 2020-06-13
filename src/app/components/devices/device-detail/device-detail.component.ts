@@ -14,7 +14,7 @@ export class DeviceDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.deviceService.getObservableDevice.subscribe(device => this.device =  device);
+        this.deviceService.getObservableDevice.subscribe(device => this.device = device);
     }
 
 }

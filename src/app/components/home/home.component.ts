@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
     private fDate: string = 'MM/dd/yyyy HH:mm:ss';
     private locale: string = 'en-ZA';
 
-    private _logsModel: RollingLogsModel[] = [];
-
     constructor(private deviceService: DeviceService) {
     }
+
+    private _logsModel: RollingLogsModel[] = [];
 
     get logsModel(): RollingLogsModel[] {
         return this._logsModel;
