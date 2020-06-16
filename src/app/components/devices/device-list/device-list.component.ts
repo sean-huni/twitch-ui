@@ -11,17 +11,17 @@ import {DeviceListDetailService} from "../../../services/device-list-detail.serv
 })
 export class DeviceListComponent implements OnInit {
     private device: Device;
-    private devices: Device[] = [];
+    private _devices: Device[] = [];
 
     constructor(private deviceService: DeviceService, private deviceListDetailService: DeviceListDetailService) {
     }
 
     get getDevices(): Device[] {
-        return this.devices;
+        return this._devices;
     }
 
     set setDevices(value: Device[]) {
-        this.devices = value;
+        this._devices = value;
     }
 
     ngOnInit() {
@@ -103,9 +103,14 @@ export class DeviceListComponent implements OnInit {
                 // console.log('JSON-Resp', this.getDevices);
                 // this.devices.push(res);
                 // this._devices = res as Device[];
-                console.log('Devices: ', this.devices);
+                console.log('Devices: ', this._devices);
                 // console.log('Values: ', this.devices.values());
             }, error => console.error(error)
         );
+    }
+
+
+    get devices(): Device[] {
+        return this._devices;
     }
 }
